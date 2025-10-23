@@ -1,0 +1,27 @@
+version: '3.8'
+
+services:
+  haraka:
+    build: .
+    container_name: haraka
+    ports:
+      - "2525:25"
+    depends_on:
+      - mailpit
+    networks:
+      - mailnet
+
+  mailpit:
+    image: axllent/mailpit
+    container_name: mailpit
+    restart: unless-stopped
+    ports:
+      - "8025:8025" # Web UI
+      - "1025:1025" # SMTP port
+    networks:
+      - mailnet
+
+networks:
+  mailnet:
+    driver: bridge
+
