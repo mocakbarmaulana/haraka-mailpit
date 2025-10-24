@@ -22,7 +22,7 @@ queue/smtp_forward" > config/plugins
 RUN echo "[core]\nmethods=CRAM-MD5\n\n[users]\nmailu=mailu" > config/auth_flat_file.ini
 
 # Tambahkan domain yang valid agar tidak error "No valid MX for your FROM address"
-RUN echo "example.com" > config/host_list
+RUN echo "*" > config/host_list
 
 # Konfigurasi smtp_forward agar bisa testing (semua email dikirim ke MailHog atau log)
 # Jika kamu ingin forward ke MailHog lokal (port 1025), uncomment baris berikut:
